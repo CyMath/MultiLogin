@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
 
-    CallbackManager fbCallBackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,43 +40,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        setUpFBLogin();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+
     }
 
-    private void setUpFBLogin()
-    {
-        LoginButton loginButton = (LoginButton) findViewById(R.id.fb_login_button);
-        loginButton.setReadPermissions("email");
-
-        fbCallBackManager = CallbackManager.Factory.create();
-
-        // Callback registration
-        loginButton.registerCallback(fbCallBackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult)
-            {
-                Intent intent = new Intent(getBaseContext(), FacebookActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onCancel()
-            {
-                Log.e("CANCEL", "DIDN't work brah");
-            }
-
-            @Override
-            public void onError(FacebookException exception)
-            {
-                Log.e("ERROR", "Something dun goofed");
-            }
-        });
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        fbCallBackManager.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
