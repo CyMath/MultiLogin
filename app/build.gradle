@@ -31,4 +31,8 @@ dependencies {
     // Include all the Twitter APIs
     compile 'com.twitter.sdk.android:twitter:3.0.0'
     testCompile 'junit:junit:4.12'
+
+    //Google API
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
+
 }

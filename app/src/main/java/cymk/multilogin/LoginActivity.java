@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.common.SignInButton;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -24,6 +25,9 @@ public class LoginActivity extends AppCompatActivity
 
     //Twitter Login Object
     TwitterLogin tLogin;
+
+    //Google Login Object
+    GoogleLogin googleLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +45,34 @@ public class LoginActivity extends AppCompatActivity
         TwitterLoginButton twtLoginButton = (TwitterLoginButton) findViewById(R.id.twitter_loginButton);
         tLogin.setLoginButton(twtLoginButton);
 
+        //Google Login Button
+        // Set the dimensions of the sign-in button.
+        SignInButton googleLoginButton = (SignInButton) findViewById(R.id.google_loginButton);
+        googleLoginButton.setSize(SignInButton.SIZE_ICON_ONLY);
+        googleLogin = new GoogleLogin(this);
+        googleLogin.setButton(googleLoginButton);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //Send result of activity to Facebook Login, if it was facebook.
-        fbLogin.loginResult(requestCode, resultCode, data);
+        if(requestCode == googleLogin.GOOGLE_LOGIN)
+        {
+            //Send result of activity to Google Login, if it was Google
+            googleLogin.loginResult(data);
+        }
+        else
+        {
 
-        //Send result of activity to Twitter Login, if it was Twitter
-        tLogin.loginResult(requestCode, resultCode, data);
+            //Send result of activity to Facebook Login, if it was facebook.
+            fbLogin.loginResult(requestCode, resultCode, data);
+
+            //Send result of activity to Twitter Login, if it was Twitter
+            tLogin.loginResult(requestCode, resultCode, data);
+
+        }
     }
 
     //Don't want the user to be able to go back from the login
