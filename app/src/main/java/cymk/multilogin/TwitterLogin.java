@@ -28,7 +28,7 @@ class TwitterLogin
         this.context = context;
         TwitterConfig config = new TwitterConfig.Builder(context)
                 .logger(new DefaultLogger(Log.DEBUG))
-                .twitterAuthConfig(new TwitterAuthConfig("qkd3jbgu1LpnrdyNvklVEJmha", "JYy5ujxZMBBarIfZ4dUNjBuK1RA9SK8QDkyoUOEyT5gawmb4kW"))
+                .twitterAuthConfig(new TwitterAuthConfig("xxx", "xxx"))
                 .debug(true)
                 .build();
         Twitter.initialize(config);
