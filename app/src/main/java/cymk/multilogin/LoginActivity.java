@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.SignInButton;
@@ -17,7 +18,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-public class LoginActivity extends AppCompatActivity
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener
 {
 
     //Facebook Login Object
@@ -28,6 +29,9 @@ public class LoginActivity extends AppCompatActivity
 
     //Google Login Object
     GoogleLogin googleLogin;
+
+    //Server Login Object
+    Button serverLoginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,11 @@ public class LoginActivity extends AppCompatActivity
         googleLoginButton.setSize(SignInButton.SIZE_ICON_ONLY);
         googleLogin = new GoogleLogin(this);
         googleLogin.setButton(googleLoginButton);
+
+        //Custom Server login
+        serverLoginButton = (Button) findViewById(R.id.server_loginButton);
+        serverLoginButton.setOnClickListener(this);
+        //ServerLogin serverLogin = new ServerLogin();
 
     }
 
@@ -85,5 +94,16 @@ public class LoginActivity extends AppCompatActivity
     public void loginFinish()
     {
         finish();
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        if(view == serverLoginButton)
+        {
+            Intent intent = new Intent(this, ServerLoginActivity.class);
+            startActivity(intent);
+        }
+
     }
 }

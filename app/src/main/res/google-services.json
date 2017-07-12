@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "114336120303",
+    "project_id": "multilogin-afeef"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114336120303:android:4decad3157797aaf",
+        "android_client_info": {
+          "package_name": "cymk.multilogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114336120303-e07gqm9i1922v1hp92jbug9a077s3l5h.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "114336120303-ev6pcbn1j9l9k3bvrpjv598sbuan756m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cymk.multilogin",
+            "certificate_hash": "96c6dffe45b999336eee74358e99b23c1479f3a6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRULNf4LLq9QHGwe2rabv2sMdTQnlD1_Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
